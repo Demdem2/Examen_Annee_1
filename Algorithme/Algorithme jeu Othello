@@ -4,6 +4,17 @@ ENTREE:
 SORTIE:
 BUT: Réaliser le jeu de société Othello
 
+PROCEDURE placementDesPions ()
+
+
+
+
+
+
+
+
+
+
 Var:
 joueur,tours: ENTIER
 
@@ -14,6 +25,10 @@ DEBUT
 
 	joueur<-1
 	tours<-1
+
+	
+
+
 
 	TANTQUE victoire <> 1 | | victoire <> 2 FAIRE 		//tant que la victoire n'est pas donnée au joueur 1 ou 2 on continue 													   de jouer
 
