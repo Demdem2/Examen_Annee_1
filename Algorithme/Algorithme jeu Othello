@@ -4,28 +4,33 @@ ENTREE:
 SORTIE:
 BUT: Réaliser le jeu de société Othello
 
-Variable:
-joueur: ENTIER
+Var:
+joueur,tours: ENTIER
 
 
 DEBUT
 	//joueur 1= pion noir
 	//joueur 2= pion blanc
-	joueur<-1
 
-	TANTQUE victoire <> 1 | | victoire <> 2 FAIRE{ 		//tant que la victoire n'est pas donnée au joueur 1 ou 2 on continue 													   de jouer
+	joueur<-1
+	tours<-1
+
+	TANTQUE victoire <> 1 | | victoire <> 2 FAIRE 		//tant que la victoire n'est pas donnée au joueur 1 ou 2 on continue 													   de jouer
 
 		Si joueur=1{
 			pions=pions_noirs
 			placementDesPions()		//le joueur sélectionne la case où poser son pion.
-			CaseVide()				//on vérifie si la case choisit n'est pas occupée par un autre pion.
+			CaseVide()				//on vérifie si la case choisit n'est pas occupée par un autre pion ou qu'il n'est pas en 							dehors du plateau.
 			CaseAdjacente()			//on verifie si le pion se situe bien à côté d'un pions adverse et à proximité d'un de ces 							  pions dans les huits directions.
-			RetournePion()			//Retourne les pions se situant dans les huits directions du pion posé par le joueur ou n'en retourne aucun
+			RetournePion()			//Retourne les pions se situant dans les huits directions du pion posé par le joueur ou 						  n'en retourne aucun
 			Victoire()				//On vérifie s il est toujours possible de jouer, sinon on donne la victoire au joueur 							  ayant le plus de pions
 			joueur<-2				//on donne le tour au joueur suivant
-		}
+		
+		FINSI
 
-		Si joueur=2{				//même programme pour le joueur 2
+
+
+		Si joueur=2 ALORS				//même programme pour le joueur 2
 			pions=pions_blancs
 
 			placementDesPions()
@@ -38,9 +43,13 @@ DEBUT
 			Victoire()	
 
 			joueur<-1
-		}
+			tours<- tours + 1 //permet de connaitre le nombre de tours par partie
+		
+		FINSI
 
-	}
+
+	FINTANQUE
+FIN
 
 		
 	
