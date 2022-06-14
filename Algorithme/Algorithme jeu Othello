@@ -1,16 +1,35 @@
 Algorithme jeu Othello
 
-ENTREE:
-SORTIE:
-BUT: Réaliser le jeu de société Othello
+ENTREE:placement de pions chacun son tour.
+SORTIE: victoire d'un des 2 joueurs.
+BUT: Réaliser le jeu de société Othello en algorithme.
 
-PROCEDURE placementDesPions ()
+------------------------------------------
+VAR:
+	i,j : ENTIER
+	tabPlateau: tableau [64]: ENTIER
 
+PROCEDURE creationPlateau ():ENTIER
 
+	POUR i DE 1 A 8 PAS DE 1 FAIRE
+		POUR j DE 1 A 8 PAS DE 1 FAIRE
+			tabPlateau[i][j]<- 0		//on initialise le plateau vide par des zeros
+		FINPOUR
+	FINPOUR
 
+FINPROCEDURE
+------------------------------------------
+//////////////////////////////////////////
+------------------------------------------
+VAR:
 
+PROCEDURE positionDepart():ENTIER
 
+	tabPlateau [4][5]<- 1 		//1 correspond aux pions posés par le joueur 1 (en l'occurence les pions noirs)
+	tabPlateau [5][4]<- 1
 
+	tabPlateau [4][4]<- 2		//2 correspond aux pions posés par le joueur 2 (en l'occurence les pions blancs)
+	tabPlateau [5][5]<- 2
 
 
 
@@ -19,18 +38,21 @@ Var:
 joueur,tours: ENTIER
 
 
-DEBUT
+DEBUT //main
+
 	//joueur 1= pion noir
 	//joueur 2= pion blanc
 
 	joueur<-1
 	tours<-1
 
+	creationPlateau();
+	positionDepart();				//on place les 4 premiers pions sur le plateau avant de commencer la partie
 	
 
 
 
-	TANTQUE victoire <> 1 | | victoire <> 2 FAIRE 		//tant que la victoire n'est pas donnée au joueur 1 ou 2 on continue 													   de jouer
+	TANTQUE victoire <> 1 OU victoire <> 2 FAIRE 		//tant que la victoire n'est pas donnée au joueur 1 ou 2 on continue 													   de jouer
 
 		Si joueur=1{
 			pions=pions_noirs
@@ -45,7 +67,7 @@ DEBUT
 
 
 
-		Si joueur=2 ALORS				//même programme pour le joueur 2
+		Si joueur=2 ALORS			//même programme pour le joueur 2
 			pions=pions_blancs
 
 			placementDesPions()
