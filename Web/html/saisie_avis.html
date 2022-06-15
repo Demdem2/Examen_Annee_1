@@ -21,8 +21,8 @@
 		<span>Bienvenue !</span>
 	</header>
 
-<section id="zone_id">
-	<div><h2>Zone identité</h2></div>
+<section id="zone_id" class="cadre">
+	<div><h2>Identité</h2></div>
 	<form name="form_zone_id" action="#">
 		<ul>
 			<li>
@@ -54,8 +54,8 @@
 	</form>
 </section>
 
-<section id="zone_pref_jeux">
-	<div><h2>Zone Préférence de jeux</h2></div>
+<section id="zone_pref_jeux" class="cadre">
+	<div><h2>Préférence de jeux</h2></div>
 	<form>
 		<ul>
 			<li>Catégorie de jeux préférés:
@@ -78,7 +78,33 @@
 	</form>
 </section>
 
+<section id="Zone Avis" class="cadre">
+	<div><h2>Votre Avis</h2></div>
+	Vous souhaitez donner votre avis sur:
+	<select>
+		<option value=1>Jeu de Carte</option>
+		<option value=2>Jeu de Plateau</option>
+		<option value=3> Party Games</option>
+	</select>
+	
 
+   <p>
+       <label for="avis">Dites-nous tout ! (Vous êtes limités à 200 caractères).</label><br />
+       <textarea name="avis" id="avis" placeholder="Ecrire ici" rows="5" cols="50" maxlength="200"></textarea>
+   </p>
+   Votre note :
+   <select>
+   		<option value="0">0</option>
+   		<option value="1">1</option>
+   		<option value="2">2</option>
+   		<option value="3">3</option>
+   		<option value="4">4</option>
+   		<option value="5">5</option>
+
+   </select>
+</form>
+	
+</section>
 
 	<footer>
 		<address>

@@ -24,6 +24,10 @@ footer{
 	
 }
 
-#zone_id{
+h2{
+	text-align: center;
+}
+
+.cadre{
 	background-color: aliceblue;
 }
