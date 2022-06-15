@@ -5,6 +5,8 @@
 
 	<link rel='stylesheet' type='text/css' media='screen' href='../css/saisie_avis_css.css'>
 
+	<link rel='stylesheet' type='text/js' media='screen' href='../js/saisie_avis_js.js'>
+
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Saisie_avis</title>
@@ -21,7 +23,7 @@
 		<span>Bienvenue !</span>
 	</header>
 
-<section id="zone_id" class="cadre">
+<section id="zone_id" class="cadre" >
 	<div><h2>Identité</h2></div>
 	<form name="form_zone_id" action="#">
 		<ul>
@@ -33,16 +35,16 @@
 				<label for="F">F</label>
 			</li>
 			<li>
-				Nom: <input type="text" placeholder="Nom" required>
+				Nom: <input type="text" placeholder="Nom" required  >
 			</li>
 			<li>
-				Prénom: <input type="text" placeholder="Prénom" required>
+				Prénom: <input type="text" placeholder="Prénom" required >
 			</li>
 			<li>
-				Email: <input type="email" placeholder="Email" required>
+				Email: <input type="email" placeholder="Email" required >
 			</li>
 			<li>
-				Date de naissance: <input type="date" placeholder="Prénom" required>
+				Date de naissance: <input type="date" placeholder="Prénom" required >
 			</li>
 			<li>
 				Adresse Postal: <input type="text" placeholder="Adresse" required>
@@ -105,6 +107,8 @@
 </form>
 	
 </section>
+<button onclick="efface()">Effacer</button>
+<button>Valider</button>
 
 	<footer>
 		<address>
