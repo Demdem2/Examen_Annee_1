@@ -1,0 +1,29 @@
+body{
+	background-color: rgba(100, 250, 50, 0.2);
+}
+
+span{
+	display: block;
+}
+
+header{
+	text-align: center;
+	text-decoration: underline;
+	text-align: center;
+	background-image: url("../img/jeux-de-societe.jpeg");
+	
+}
+
+aside{
+	text-align: right;
+}
+
+footer{
+	text-align: center;
+	background-image: url("../img/jeux-de-societe.jpeg");
+	
+}
+
+#zone_id{
+	background-color: aliceblue;
+}
