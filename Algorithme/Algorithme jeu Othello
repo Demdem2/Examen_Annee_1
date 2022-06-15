@@ -7,12 +7,12 @@ BUT: Réaliser le jeu de société Othello en algorithme.
 ------------------------------------------
 VAR:
 	i,j : ENTIER
-	tabPlateau: tableau [64]: ENTIER
+	tabPlateau: tableau [64]: ENTIER	//le jeu initial possède 64 cases
 
-PROCEDURE creationPlateau ():ENTIER
+PROCEDURE CreationPlateau ():ENTIER
 
-	POUR i DE 1 A 8 PAS DE 1 FAIRE
-		POUR j DE 1 A 8 PAS DE 1 FAIRE
+	POUR i DE 1 A 8 PAS DE 1 FAIRE		//correspond à l'axe des x (dans le jeu de société, le repère d'alphabet)
+		POUR j DE 1 A 8 PAS DE 1 FAIRE	//correspond à l'axe des y (dans le jeu de société, le repère des chiffres)
 			tabPlateau[i][j]<- 0		//on initialise le plateau vide par des zeros
 		FINPOUR
 	FINPOUR
@@ -23,7 +23,7 @@ FINPROCEDURE
 ------------------------------------------
 VAR:
 
-PROCEDURE positionDepart():ENTIER
+PROCEDURE PositionDepart():ENTIER
 
 	tabPlateau [4][5]<- 1 		//1 correspond aux pions posés par le joueur 1 (en l'occurence les pions noirs)
 	tabPlateau [5][4]<- 1
@@ -31,23 +31,93 @@ PROCEDURE positionDepart():ENTIER
 	tabPlateau [4][4]<- 2		//2 correspond aux pions posés par le joueur 2 (en l'occurence les pions blancs)
 	tabPlateau [5][5]<- 2
 
+FINPROCEDURE
+------------------------------------------
+//////////////////////////////////////////
+------------------------------------------
+FONCTION PlacementDesPions(joueur,x,y):ENTIER
+	ECRIRE ("Joueur "+joueur+": \nOù placez-vous votre pion dans l'axe des X?")
+	LIRE x
+	ECRIRE ("\nOù placez-vous votre pion dans l'axe des Y?)
+	LIRE y
 
+FINFONCTION
+------------------------------------------
+//////////////////////////////////////////
+------------------------------------------
+PROCEDURE CaseVide (x,y)	
+	
+	SI x>8 OU y>8 OU x<0 OU y<0 ALORS
+		ECRIRE ("Vous êtes en dehors du plateau, choisissez un nombre entre 1 et 8 pour l'axe x et y")
+		PlacementDesPions(x,y)
+
+	TANTQUE tabPlateau [x][y] <> 0 FAIRE
+		ECRIRE ("Cette case est déjà occupée, choisissez une autre case")
+		PlacementDesPions(x,y)
+	FINTANTQUE
+FINPROCEDURE
+-----------------------------------------
+/////////////////////////////////////////
+-----------------------------------------
+
+PROCEDURE CaseAdjacente()
+	
+	POUR i DE (x-1) à (x+1) FAIRE
+		POUR j DE (y-1) à (y+1) FAIRE
+			SI tabPlateau[x][y] <> tabPlateau[i][j] ALORS 		//on vérifie si on ne vérifie pas la case sélectionnée pour 													  éviter toute confusion au programme
+				SI tabPlateau [i][j]=1 OU tabPlateau[i][j]=2
+					tabPlateau[x][y]=joueur					//un pion est adjacent à celui que l'on veut poser donc on 												  peut désormais le poser
+				SINON
+					PlacementDesPions(x,y)						//si aucun pion n'est adjacent, il faut choisir une nouvelle 											   position
+				FINSI
+
+			FINSI
+		FINPOUR
+	FINPOUR
+
+
+
+FINPROCEDURE
+
+----------------------------------------
+////////////////////////////////////////
+----------------------------------------
+
+PROCEDURE RetournePion()
+
+SI joueur=1 ALORS
+	POUR i DE (x-1) à (x+1) FAIRE
+		POUR j DE (y-1) à (y+1) FAIRE
+			SI tabPlateau[i][j]=2 ALORS //si la machine trouve un pion adverse, elle le convertie en pion du joueur 1
+				tabPlateau[i][j]=1
+			FINSI
+		FINPOUR
+	FINPOUR
+FINPOUR
+
+SI joueur=2 ALORS
+	POUR i DE (x-1) à (x+1) FAIRE
+		POUR j DE (y-1) à (y+1) FAIRE
+			SI tabPlateau[i][j]=1 ALORS //si la machine trouve un pion adverse, elle le convertie en pion du joueur 2
+				tabPlateau[i][j]=2
+			FINSI
+		FINPOUR
+	FINPOUR
+FINPOUR
+	
 
 
 Var:
-joueur,tours: ENTIER
+joueur,tours,x,y: ENTIER
 
 
 DEBUT //main
 
-	//joueur 1= pion noir
-	//joueur 2= pion blanc
-
 	joueur<-1
 	tours<-1
 
-	creationPlateau();
-	positionDepart();				//on place les 4 premiers pions sur le plateau avant de commencer la partie
+	CreationPlateau();
+	PositionDepart();				//on place les 4 premiers pions sur le plateau avant de commencer la partie
 	
 
 
@@ -56,9 +126,9 @@ DEBUT //main
 
 		Si joueur=1{
 			pions=pions_noirs
-			placementDesPions()		//le joueur sélectionne la case où poser son pion.
+			PlacementDesPions()		//le joueur sélectionne la case où poser son pion.
 			CaseVide()				//on vérifie si la case choisit n'est pas occupée par un autre pion ou qu'il n'est pas en 							dehors du plateau.
-			CaseAdjacente()			//on verifie si le pion se situe bien à côté d'un pions adverse et à proximité d'un de ces 							  pions dans les huits directions.
+			CaseAdjacente()			//on verifie si le pion se situe bien à côté d'un pions adverse et à proximité d'un de 							  ces pions dans les huits directions.
 			RetournePion()			//Retourne les pions se situant dans les huits directions du pion posé par le joueur ou 						  n'en retourne aucun
 			Victoire()				//On vérifie s il est toujours possible de jouer, sinon on donne la victoire au joueur 							  ayant le plus de pions
 			joueur<-2				//on donne le tour au joueur suivant
