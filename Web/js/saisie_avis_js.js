@@ -72,3 +72,12 @@ function verification(){
 	}
 
 }
+
+function recupDonnee(){
+	var Nom=document.getElementById('clear0').value
+	//if (verification()==false) {
+		//document.write('<a href="./votre_avis.html">ha</a>')
+	//}
+	var zoneId=document.getElementById('zone_id').value
+	
+}
