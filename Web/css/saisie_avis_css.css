@@ -31,3 +31,9 @@ h2{
 .cadre{
 	background-color: aliceblue;
 }
+
+.bordure{
+	border-width: 2px;
+	border-color: red;
+}
+

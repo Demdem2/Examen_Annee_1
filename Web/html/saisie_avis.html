@@ -5,14 +5,14 @@
 
 	<link rel='stylesheet' type='text/css' media='screen' href='../css/saisie_avis_css.css'>
 
-	<link rel='stylesheet' type='text/js' media='screen' href='../js/saisie_avis_js.js'>
+	
 
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Saisie_avis</title>
 	<style type="text/css"></style>
 
-	<script type="text/javascript"></script>
+	<script type="text/javascript" src="../js/saisie_avis_js.js" ></script>
 
 
 </head>
@@ -22,46 +22,54 @@
 		<span><h1>KiffMySocialGame</h1></span>
 		<span>Bienvenue !</span>
 	</header>
-
+<br>
 <section id="zone_id" class="cadre" >
-	<div><h2>Identité</h2></div>
-	<form name="form_zone_id" action="#">
-		<ul>
-			<li>
-				Genre: 
-				<input type="radio" name="genre" id="M">
-				<label for="M">M</label>
-				<input type="radio" name="genre" id="F">
-				<label for="F">F</label>
-			</li>
-			<li>
-				Nom: <input type="text" placeholder="Nom" required  >
-			</li>
-			<li>
-				Prénom: <input type="text" placeholder="Prénom" required >
-			</li>
-			<li>
-				Email: <input type="email" placeholder="Email" required >
-			</li>
-			<li>
-				Date de naissance: <input type="date" placeholder="Prénom" required >
-			</li>
-			<li>
-				Adresse Postal: <input type="text" placeholder="Adresse" required>
-			</li>
-			<li>
-				Téléphone: <input type="text" placeholder="Votre numéro" required>
-			</li>
-		</ul>
+	<form name="form_zone_id" action="#" >
+		<fieldset>
+			<legend>Identité</legend>
+			<ul>
+				<li>
+					Genre: 
+					<input type="radio" name="genre" id="M" >
+					<label for="M">M</label>
+					<input type="radio" name="genre" id="F" >
+					<label for="F">F</label>
+				</li>
+				<li>
+					Nom: <input type="text" placeholder="Nom" required id="clear0" >
+				</li>
+				<li>
+					Prénom: <input type="text" placeholder="Prénom" required id="clear1" >
+				</li>
+				<li onchange="emailjuste()">
+					Email: <input type="email" placeholder="Email" required id="clear2" >
+					écrivez-le une 2ème fois:
+					<input type="email" placeholder="Email" required id="clear7">
+				</li>
+
+				<li>
+					Date de naissance: <input type="date" placeholder="Prénom" required id="clear3">
+				</li>
+				<li>
+					Adresse Postal: <input type="text" placeholder="Adresse" id="clear4" required>
+				</li>
+				<li>
+					Téléphone: <input type="text" placeholder="Votre numéro" required id="clear5">
+				</li>
+			</ul>
+		</fieldset>
 	</form>
 </section>
-
+<br>
 <section id="zone_pref_jeux" class="cadre">
-	<div><h2>Préférence de jeux</h2></div>
+	
 	<form>
+		<fieldset>
+			<legend>Préférence de jeux</legend>
 		<ul>
 			<li>Catégorie de jeux préférés:
-				<select>
+				<select id="neutre0">
+					<option value=0 >Choisissez ici</option>
 					<option value=1>Jeu de Carte</option>
 					<option value=2>Jeu de Plateau</option>
 					<option value=3> Party Games</option>
@@ -69,46 +77,67 @@
 			</li>
 			<li>
 				Vos jeux préférés:
-				<select>
-					<option value=1>Jeu de Carte</option>
-					<option value=2>Jeu de Plateau</option>
-					<option value=3> Party Games</option>
+				<select id="neutre1">
+					<option value=0 >Choisissez ici</option>
+					<option value=1>Tarot</option>
+					<option value=2>Monopoly</option>
+					<option value=3>Uno</option>
 				</select>
 			</li>
 		</ul>
-		
+		</fieldset>
 	</form>
 </section>
-
+<br>
 <section id="Zone Avis" class="cadre">
-	<div><h2>Votre Avis</h2></div>
-	Vous souhaitez donner votre avis sur:
-	<select>
-		<option value=1>Jeu de Carte</option>
-		<option value=2>Jeu de Plateau</option>
-		<option value=3> Party Games</option>
-	</select>
+	<form>
+	<fieldset>
+	<legend>Votre Avis</legend>
+	<p class="bordure">
+		Vous souhaitez donner votre avis sur:
+		<div id="clear8">
+	      <input type="checkbox" id="tarot" name="tarot">
+	      <label for="tarot">Tarot</label>
+	    </div>
+
+		<div id="clear9">
+	      <input type="checkbox" id="Monopoly" name="monopoly">
+	      <label for="monopoly">Monopoly</label>
+	    </div>
+
+	    <div id="clear10">
+	      <input type="checkbox" id="Uno" name="Uno">
+	      <label for="Uno">Uno</label>
+	    </div>
+	</p>
 	
 
+	
+		
+
    <p>
-       <label for="avis">Dites-nous tout ! (Vous êtes limités à 200 caractères).</label><br />
-       <textarea name="avis" id="avis" placeholder="Ecrire ici" rows="5" cols="50" maxlength="200"></textarea>
+       <label for="avis" >Dites-nous tout ! (Vous êtes limités à 200 caractères).</label><br />
+       <textarea id="clear6" name="avis" id="avis" placeholder="Ecrire ici" rows="5" cols="50" maxlength="200" class="bordure"></textarea>
    </p>
    Votre note :
-   <select>
-   		<option value="0">0</option>
-   		<option value="1">1</option>
-   		<option value="2">2</option>
-   		<option value="3">3</option>
-   		<option value="4">4</option>
+   <select id="neutre3" class="bordure">
+   		<option  value="0" >Choisissez ici</option>
+   		<option  value="1">1</option>
+   		<option  value="2">2</option>
+   		<option  value="3">3</option>
+   		<option  value="4">4</option>
    		<option value="5">5</option>
 
    </select>
+   </fieldset>
 </form>
 	
 </section>
+<br>
 <button onclick="efface()">Effacer</button>
-<button>Valider</button>
+
+<button onclick="verification()">Valider</button>
+
 
 	<footer>
 		<address>
